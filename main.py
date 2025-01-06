@@ -1,14 +1,48 @@
 import matplotlib.pyplot as plt
 
+#Bonds selection
+interest = 0
+investment_duration = 0
+valid_bond_types = ["OTS", "ROR", "DOR", "TOS", "COI", "EDO"]
+
+bond_type = input("Enter a type of bond (OTS, ROR, DOR, TOS, COI, EDO): ")
+while bond_type not in valid_bond_types:
+    print("Please enter correct type of bond")
+    bond_type = input("Enter a type of bond (OTS, ROR, DOR, TOS, COI, EDO): ")
+    
+if bond_type == "OTS":
+        interest = 0.03
+        investment_duration = 3
+elif bond_type == "ROR":
+        interest = 0.0575
+        investment_duration = 12
+elif bond_type == "DOR":
+        interest = 0.0590
+        investment_duration = 24
+elif bond_type == "TOS":
+        interest = 0.0595
+        investment_duration = 36
+elif bond_type == "COI":
+        interest = 0.0630
+        investment_duration = 48
+elif bond_type == "EDO":
+        interest = 0.0655
+        investment_duration = 120
+
+#Investment definition
+
 month_quantity = int(input("Enter number of month for simulation: "))
+while month_quantity <= 0:
+    print("Month quantity must be more than zero.")
+    month_quantity = int(input("Enter correct number of month for simulation: "))
+
 monthly_payment = int(input("Enter monthly payment in zl: "))
+while monthly_payment <= 0:
+    print("Monthly payment must be more than zero.")
+    monthly_payment = int(input("Enter monthly payment in zl: "))
 
 print(f"Simulation time range is {month_quantity} months.")
 print(f"Monthly payment is {monthly_payment} zl.")
-
-#Bonds parameters
-interest = 0.03
-investment_duration = 3
 
 balance = 0
 total_invested_cash = 0
